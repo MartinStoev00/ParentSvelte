@@ -24,7 +24,7 @@
 
   let data = {};
 
-  let currentTab = "contacts/sms";
+  let currentTab = "calls";
 
   let sendData = null;
 

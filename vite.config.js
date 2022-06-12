@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { defineConfig } from "vite";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [svelte()]
-})
+export default defineConfig(({ mode }) => ({
+  plugins: [svelte()],
+  build: { minify: mode === "production" },
+  optimizeDeps: { include: ["@carbon/charts"] },
+}));

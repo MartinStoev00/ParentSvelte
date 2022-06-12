@@ -29,7 +29,9 @@
         {#each sms.filter(({ body, sender }) => (body + sender)
             .toLowerCase()
             .includes(searchSms.toLocaleLowerCase())) as { body, date, sender, status }}
-          <div class="border-solid border rounded bg-white p-2 mb-2">
+          <div
+            class="border-solid border border-slate-200 transition hover:shadow rounded bg-white p-2 mb-2"
+          >
             <div class="flex flex-col">
               <div class="flex justify-between">
                 <div>
@@ -69,7 +71,7 @@
             .toLowerCase()
             .includes(searchContact.toLocaleLowerCase())) as { name, number }}
           <div
-            class="border-solid border rounded bg-white p-2 mb-2 flex justify-between"
+            class="border-solid border border-slate-200 transition hover:shadow rounded bg-white p-2 mb-2 flex justify-between"
           >
             <div class="w-fit">
               <div>
