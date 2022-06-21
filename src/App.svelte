@@ -60,9 +60,22 @@
     get(refD)
       .then((snapshot) => {
         if (snapshot.exists()) {
-          data = { block: [], ...snapshot.val() };
+          const v = snapshot.val();
+          for (const labelV in v) {
+            v[labelV] = v[labelV].filter(
+              (item) => item != undefined || item != null
+            );
+          }
+          data = { block: [], ...v };
+          console.log(data);
           onValue(refD, (snapshotL) => {
-            data = { block: [], ...snapshotL.val() };
+            const vL = snapshotL.val();
+            for (const labelV in vL) {
+              vL[labelV] = vL[labelV].filter(
+                (item) => item != undefined || item != null
+              );
+            }
+            data = { block: [], ...vL };
           });
         } else {
           console.log("No data available");
@@ -73,6 +86,90 @@
       });
 
     sendData = () => set(refD, data);
+
+    //modify
+    let f = () =>
+      set(refD, {
+        calls: [
+          {
+            contact: "Noone",
+            date: "15-06-22 20:57",
+            duration: "00:00:28",
+            number: "+0123123123",
+            type: "INCOMING",
+          },
+          {
+            contact: "Noone",
+            date: "13-06-22 20:57",
+            duration: "00:00:28",
+            number: "+0123123123",
+            type: "INCOMING",
+          },
+          {
+            contact: "Noone1",
+            date: "10-06-22 20:57",
+            duration: "00:00:28",
+            number: "+0123123124",
+            type: "INCOMING",
+          },
+          {
+            contact: "Noone1",
+            date: "14-06-22 20:57",
+            duration: "00:00:28",
+            number: "+0123123124",
+            type: "INCOMING",
+          },
+          {
+            contact: "Noone2",
+            date: "17-06-22 20:57",
+            duration: "00:00:28",
+            number: "+0123123125",
+            type: "INCOMING",
+          },
+          {
+            contact: "Noone2",
+            date: "12-06-22 20:57",
+            duration: "00:00:28",
+            number: "+0123123125",
+            type: "INCOMING",
+          },
+        ],
+        sms: [
+          {
+            body: "Test Text Send",
+            date: "11-06-22 13:53",
+            sender: "User1",
+            status: "RECEIVED",
+          },
+          {
+            body: "Test Text 123",
+            date: "14-06-22 13:53",
+            sender: "User2",
+            status: "RECEIVED",
+          },
+          {
+            body: "Last Test Text",
+            date: "17-06-22 13:53",
+            sender: "User3",
+            status: "RECEIVED",
+          },
+        ],
+        contacts: [
+          {
+            name: "Noone",
+            number: "+0123123123",
+          },
+          {
+            name: "Noone1",
+            number: "+0123123124",
+          },
+          {
+            name: "Noone2",
+            number: "+0123123125",
+          },
+        ],
+      });
+    // f();
   });
 
   const blockNumber = (contact) => {
