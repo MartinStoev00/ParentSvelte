@@ -1,6 +1,11 @@
 <script>
   import { initializeApp } from "firebase/app";
-  import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+  import {
+    getAuth,
+    signInWithPopup,
+    signInWithRedirect,
+    GoogleAuthProvider,
+  } from "firebase/auth";
   import { getDatabase, ref, onValue, set, get } from "firebase/database";
 
   import { SvelteToast } from "@zerodevx/svelte-toast";
@@ -38,7 +43,7 @@
     const auth = getAuth();
     let singedin = localStorage.getItem("user");
     if (!singedin) {
-      signInWithPopup(auth, provider)
+      signInWithRedirect(auth, provider)
         .then((result) => {
           user = result.user;
           console.log(user.uid);
