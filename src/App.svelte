@@ -208,6 +208,10 @@
   };
 </script>
 
+<svelte:head>
+	<title>Parental Monitoring Application</title>
+</svelte:head>
+
 <SvelteToast />
 <div class="flex flex-col h-screen bg-red-500">
   <header class="bg-blue-500 p-5 text-white font-semibold text-xl">
