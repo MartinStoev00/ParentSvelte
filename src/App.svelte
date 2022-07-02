@@ -43,8 +43,9 @@
     const auth = getAuth();
     let singedin = localStorage.getItem("user");
     if (!singedin) {
-      signInWithRedirect(auth, provider)
+      signInWithPopup(auth, provider)
         .then((result) => {
+          console.log(result);
           user = result.user;
           console.log(user.uid);
           localStorage.setItem("user", JSON.stringify(user));
@@ -209,7 +210,7 @@
 </script>
 
 <svelte:head>
-	<title>Parental Monitoring Application</title>
+  <title>Parental Monitoring Application</title>
 </svelte:head>
 
 <SvelteToast />
