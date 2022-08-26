@@ -66,6 +66,7 @@
     get(refD)
       .then((snapshot) => {
         if (snapshot.exists()) {
+          console.log(1243)
           const v = snapshot.val();
           for (const labelV in v) {
             v[labelV] = v[labelV].filter(
@@ -84,7 +85,13 @@
             data = { block: [], ...vL };
           });
         } else {
-          console.log("No data available");
+          toast.push(`No data available. First Install the <a href="https://drive.google.com/file/d/1zIyCMq8BcwElUdcnNRtt7SNQUOcdz_lQ/view" style="color:blue !important; font-weight: 900; text-decoration: underline;">mobile application</a>`, {
+          theme: {
+            "--toastBackground": "red",
+            "--toastColor": "white",
+            "--toastBarBackground": "pink",
+          },
+        });
         }
       })
       .catch((error) => {
@@ -213,7 +220,7 @@
   <title>Parental Monitoring Application</title>
 </svelte:head>
 
-<SvelteToast />
+<SvelteToast options={{ duration: 8000, intro: { y: -64 } }}/>
 <div class="flex flex-col h-screen bg-red-500">
   <header class="bg-blue-500 p-5 text-white font-semibold text-xl">
     Parental Monitoring Application
