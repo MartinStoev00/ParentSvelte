@@ -223,7 +223,7 @@
 <SvelteToast options={{ duration: 8000, intro: { y: -64 } }}/>
 <div class="flex flex-col h-screen bg-red-500">
   <header class="bg-blue-500 p-5 text-white font-semibold text-xl">
-    Parental Monitoring Application
+    Parental Monitoring Application | University of Twente
   </header>
 
   <div class="flex flex-grow bg-green-500">
